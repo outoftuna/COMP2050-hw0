@@ -1,0 +1,28 @@
+threshold 99
+growth 0.25
+spread 0.5
+location Vinh-Phuc
+location Ha-Noi
+location Da-Nang
+location Ho-Chi-Minh 
+location Hai-Phong 
+location Binh-Duong
+location Hue
+location Can-Tho
+location Quang-Ninh
+start Hai-Phong 
+covid Binh-Duong 100
+covid Quang-Ninh 0
+covid Ha-Noi 0
+covid Da-Nang 100
+conn Ha-Noi Vinh-Phuc
+conn Ha-Noi Da-Nang
+conn Da-Nang Ho-Chi-Minh 
+conn Ho-Chi-Minh Can-Tho
+conn Ho-Chi-Minh Hai-Phong 
+conn Hai-Phong Binh-Duong
+conn Binh-Duong Hue
+conn Hue Can-Tho
+conn Can-Tho Quang-Ninh
+conn Quang-Ninh Hue
+conn Quang-Ninh Vinh-Phuc
