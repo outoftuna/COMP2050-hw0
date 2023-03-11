@@ -12,6 +12,7 @@ ln_e = math.log(math.e)
 
 twenty_radians = 20*math.pi/180
 
+
 def quotient_ceil(numerator, denominator):
     """ 
     Returns the ceiling of the result of the division
@@ -19,12 +20,14 @@ def quotient_ceil(numerator, denominator):
     """
     return int(math.ceil(numerator/denominator))
 
+
 def quotient_floor(numerator, denominator):
     """
     Returns the floor of the result of the division
     (number, number) -> int
     """
     return int(math.floor(numerator/denominator))
+
 
 def manhattan(x1, y1, x2, y2):
     """ 

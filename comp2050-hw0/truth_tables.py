@@ -1,6 +1,6 @@
 """ File name:   truth_tables.py
-    Author:      
-    Date:        
+    Author:      Ta Viet Thang 
+    Date:        Mar 11, 2023
     Description: This file defines a number of functions which implement Boolean
                  expressions.
 
@@ -16,17 +16,17 @@ from typing import Callable
 
 def boolean_fn1(a:bool, b:bool, c:bool) -> bool:
     """ Return the truth value of (a ∨ b) → (-a ∧ -b) """
-    # YOUR CODE HERE
+    return not(a or b) or ((not a) and (not b))
 
 
 def boolean_fn2(a:bool, b:bool, c:bool) -> bool:
     """ Return the truth value of (a ∧ b) ∨ (-a ∧ -b) """
-    # YOUR CODE HERE
+    return not(a and b) or ((not a) and (not b))
 
 
 def boolean_fn3(a:bool, b:bool, c:bool) -> bool:
     """ Return the truth value of ((c → a) ∧ (a ∧ -b)) ∨ (-a ∧ b) """
-    # YOUR CODE HERE
+    return ((not c or a) and (a and not b)) or (not a and b)
 
 
 def draw_truth_table(boolean_fn:Callable) -> None:
@@ -51,7 +51,12 @@ def draw_truth_table(boolean_fn:Callable) -> None:
         True  True  False False
         True  True  True  False
     """
-    # YOUR CODE HERE
+    print('a\t b\t c\t res')
+    print('----------------------')
+    for a in [False, True]:
+        for b in [False, True]:
+            for c in [False, True]:
+                print(a, '\t', b, '\t', c, '\t', boolean_fn(a,b,c))
 
 if __name__ == "__main__":
     print("boolean_fn1")
