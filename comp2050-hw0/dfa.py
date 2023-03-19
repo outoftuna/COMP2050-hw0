@@ -1,6 +1,6 @@
 """ File name:   dfa.py
-    Author:      
-    Date:        
+    Author:      Ta Viet Thang
+    Date:        March 18, 2023 
     Description: This file defines a function which reads in
                  a DFA described in a file and builds an appropriate datastructure.
 
@@ -27,8 +27,22 @@ def load_dfa(path_to_dfa_file:str)->object:
         (str) -> Object
     """
 
-    # YOUR CODE HERE
-
+    edges = dict()
+    start = []
+    accept = []
+    with open(path_to_dfa_file) as file:
+        for line in file:
+            if line.startswith('initial'):
+                start = line.split()[1:]
+            elif line.startswith('accepting'):
+                accept = line.split()[1:]
+            elif line.startswith('transition'):
+                content = line.split()[1:]
+                if content[0] not in edges.keys():
+                    edges[content[0]] = {content[2]: content[1]}
+                else: 
+                    edges[content[0]][content[2]] = content[1]
+    return [(start, accept), edges]
 
 
 def accepts_word(dfa:object, word:str) -> bool:
@@ -39,7 +53,21 @@ def accepts_word(dfa:object, word:str) -> bool:
         (Object, str) -> bool
     """
 
-    # YOUR CODE HERE
+    initial = dfa[0][0]  
+    current = initial[0]  
+    accepting = dfa[0][1]  
+    edges = dfa[1]  
+
+    for character in word:
+        try:
+            if character in edges[current].keys():
+                current = edges[current][character]  
+            else:
+                return False
+        except KeyError:
+            return False
+    return current in accepting
+
 
 
 def assert_test(result, expect, word):
@@ -49,7 +77,7 @@ def assert_test(result, expect, word):
 def test_dfa1():
     print("="*10)
     print("TEST DFA 1")
-    path_to_dfa = 'exercise3_dfa/test1.dfa'
+    path_to_dfa = 'comp2050-hw0/exercise3_dfa/test1.dfa'
     dfa = load_dfa(path_to_dfa)
     words = ["planning", "satisfiability", "search", "reinforcement", "learning"]
     expected = [True] * len(words)
@@ -63,7 +91,7 @@ def test_dfa1():
 def test_dfa2():
     print("="*10)
     print("TEST DFA 2")
-    path_to_dfa = 'exercise3_dfa/test2.dfa'
+    path_to_dfa = 'comp2050-hw0/exercise3_dfa/test2.dfa'
     dfa = load_dfa(path_to_dfa)
     words = ["sang","sing","song","sung"]
     expected = [True] * len(words)
@@ -77,7 +105,7 @@ def test_dfa2():
 def test_dfa3():
     print("="*10)
     print("TEST DFA 3")
-    path_to_dfa = 'exercise3_dfa/test3.dfa'
+    path_to_dfa = 'comp2050-hw0/exercise3_dfa/test3.dfa'
     dfa = load_dfa(path_to_dfa)
     words = ["0", "01", "010", "0101", "01010", "010101", "0101010", "01010101", "010101010", "0101010101"]
     expected = [True] * len(words)
@@ -91,7 +119,7 @@ def test_dfa3():
 def test_dfa4():
     print("="*10)
     print("TEST DFA 4")
-    path_to_dfa = 'exercise3_dfa/test4.dfa'
+    path_to_dfa = 'comp2050-hw0/exercise3_dfa/test4.dfa'
     dfa = load_dfa(path_to_dfa)
     words = ["af", "abcf", "adef", "abcbcf", "adebcf", "abcdef", "abcdebcbcf"]
     expected = [True] * len(words)
@@ -104,6 +132,6 @@ def test_dfa4():
 
 if __name__ == "__main__":
     test_dfa1()
-    test_dfa2()
+    test_dfa2() 
     test_dfa3()
     test_dfa4()
