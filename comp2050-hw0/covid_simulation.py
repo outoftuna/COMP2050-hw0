@@ -40,8 +40,8 @@ class Capturing(list):
 
 
 non_existent_test = "tests/non_existent_test.scn"
-test_files = ["exercise4_maps/test1.scn",
-              "exercise4_maps/test2.scn", "exercise4_maps/test3.scn"]
+test_files = ["comp2050-hw0/exercise4_maps/test1.scn",
+              "comp2050-hw0/exercise4_maps/test2.scn", "comp2050-hw0/exercise4_maps/test3.scn"]
 test_params = [
     {"threshold": 0.5, "growth": 0.2, "spread": 0.1, "locations": ["l1", "l2"],
      "location": "l1",

@@ -26,11 +26,11 @@ class COVID19Scenario:
             with open(path_to_scenario_file) as file:
                 for line in file:
                     if line.startswith('threshold'):
-                        self.threshold = line.split()[1]
+                        self.threshold = float(line.split()[1])
                     elif line.startswith('growth'):
-                        self.growth = line.split()[1]
+                        self.growth = float(line.split()[1])
                     elif line.startswith('spread'):
-                        self.spread = line.split()[1]
+                        self.spread = float(line.split()[1])
                     elif line.startswith('start'):
                         self.location = line.split()[1]
                     elif line.startswith('covid'):
@@ -71,7 +71,7 @@ class COVID19Scenario:
 
     def spread_covid(self):
         more_covid = self.covid.copy()
-        for loc in self.loactions.keys():
+        for loc in self.locations:
             if self.location != loc:
                 d = self.covid[loc]
                 d *= 1 + self.growth
