@@ -63,7 +63,7 @@ class COVID19Scenario:
         return moves
 
     def move(self, loc):
-        if loc in self.conn[self.location]:
+        if loc in self.valid_moves():
             self.location = loc
             self.covid[loc] = float(0)
         else: 

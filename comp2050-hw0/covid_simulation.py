@@ -40,8 +40,8 @@ class Capturing(list):
 
 
 non_existent_test = "tests/non_existent_test.scn"
-test_files = ["comp2050-hw0/exercise4_maps/test1.scn",
-              "comp2050-hw0/exercise4_maps/test2.scn", "comp2050-hw0/exercise4_maps/test3.scn"]
+test_files = ["exercise4_maps/test1.scn",
+              "exercise4_maps/test2.scn", "exercise4_maps/test3.scn"]
 test_params = [
     {"threshold": 0.5, "growth": 0.2, "spread": 0.1, "locations": ["l1", "l2"],
      "location": "l1",
@@ -487,7 +487,7 @@ def parse_arguments():
                         help='Activates TESTING mode (default: deactivated)')
     parser.add_argument('-s', '--scenario', default=None,
                         type=str, help='Path to scenario (.scn) file')
-    parser.add_argument('-a', '--agent', default='COVID19EradicationAgent',
+    parser.add_argument('-a', '--agent', default='COVID19CuringAgent',
                         type=str, help='Agent to be used (default: COVID19EradicationAgent)')
     parser.add_argument('-H', '--horizon', default=100, type=int,
                         help='Maximum number of steps in the simulation (default: 100)')
